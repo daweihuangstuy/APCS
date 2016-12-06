@@ -3,7 +3,7 @@
 //Period 4 APCS w/ Mr. Brown Mykolyk
 //HW #37 -- Be More Rational
 
-public class Rational {
+public class Rational implements Comparable {
     public int numerator;
     public int denominator;
 
@@ -114,15 +114,16 @@ public class Rational {
 	//3) Returns -1 if the calling number is smaller than the parameter
 	//4) Returns -2 if there is any error (not possible)
 	
-	public int compareTo(Rational z){
-		z.reduce();
-		if(this.floatValue() == z.floatValue()){
+	public int compareTo(Object z){
+	    Rational bob = (Rational) z;
+		bob.reduce();
+		if(this.floatValue() == bob.floatValue()){
 			return 0;
 		}
-		else if(this.floatValue() > z.floatValue()){
+		else if(this.floatValue() > bob.floatValue()){
 			return 1;
 		}
-		else if(this.floatValue() < z.floatValue()){
+		else if(this.floatValue() < bob.floatValue()){
 			return -1;
 		}
 		else{
@@ -130,6 +131,10 @@ public class Rational {
 			return -2;
 		}
 	}
+
+    public boolean equals(Object z){
+	return (z instanceof Rational && compareTo(z) == 0);
+    }
 
 } // end of Rational Class
 
@@ -178,5 +183,12 @@ class Driver{
 		System.out.println(e.compareTo(f)); // 0
 		System.out.println(e.compareTo(x)); // -1
 		System.out.println(e.compareTo(v)); // 1
+
+		// test for overriden equals method
+		Rational bob = new Rational(5,10);
+		Rational Geo = new Rational(5,10);
+		Rational xxx = new Rational();
+		System.out.println(bob.equals(Geo));
+		System.out.println(bob.equals(xxx));
 	}
 }
