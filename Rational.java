@@ -1,7 +1,7 @@
 //Dawei Huang
-//Due: 12/01/2016
+//Due: 12/07/2016
 //Period 4 APCS w/ Mr. Brown Mykolyk
-//HW #37 -- Be More Rational
+//HW #40 -- Rational Equality
 
 public class Rational implements Comparable {
     public int numerator;
@@ -108,7 +108,7 @@ public class Rational implements Comparable {
 		}
 	}
 	
-	//compareTo methods
+	//Overriden compareTo method from class Comparable
 	//1) Returns 0 if the two numbers are equal
 	//2) Returns 1 if the calling number is larger than the parameter
 	//3) Returns -1 if the calling number is smaller than the parameter
@@ -132,8 +132,11 @@ public class Rational implements Comparable {
 		}
 	}
 
+	//equals method checks to see if a given Object is an instance of class Rational
+	// and that it is equivalent in value to the referanced object of the same class. 
+	// If so, return true. Otherwise, return false.
     public boolean equals(Object z){
-	return (z instanceof Rational && compareTo(z) == 0);
+		return (z instanceof Rational && compareTo(z) == 0);
     }
 
 } // end of Rational Class
