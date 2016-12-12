@@ -9,9 +9,9 @@
   expansion, and read/write capability on elements.
   ==================================================*/
 
-public class SuperArray implements ListInt {
+public class SuperArray implements List {
 
-    private int[] _data;  //underlying container structure
+    private Object[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
     private int _size;    //number of meaingful values
 
@@ -20,7 +20,7 @@ public class SuperArray implements ListInt {
     public SuperArray() 
     { 
 	/* YOUR IMPLEMENTATION HERE */
-	_data = new int[10];
+	_data = new Object[10];
 	_lastPos = -1;
 	_size = 0;
     }
@@ -43,7 +43,7 @@ public class SuperArray implements ListInt {
     private void expand() 
     { 
 	/* YOUR IMPLEMENTATION HERE */
-	int[] newArray = new int[2*_data.length];
+	Object[] newArray = new Object[2*_data.length];
 	for (int a = 0; a < _data.length; a++) {
 	    newArray[a] = _data[a];
 	}
@@ -51,17 +51,17 @@ public class SuperArray implements ListInt {
     }
 
     //accessor method -- return value at specified index
-    public int get( int index ) 
+    public Object get( int index ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
 	return _data[index];
     }
 
     //mutator method -- set index to newVal, return old value at index
-    public int set( int index, int newVal ) 
+    public Object set( int index, Object newVal ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
-	int a = _data[index];
+	Object a = _data[index];
 	_data[index] = newVal;
 	return a;
     }
@@ -115,7 +115,7 @@ public class SuperArray implements ListInt {
     public static void main( String[] args ) 
     {
 
-	ListInt curtis = new SuperArray();
+	List curtis = new SuperArray();
 	System.out.println("Printing empty SuperArray curtis...");
 	System.out.println(curtis);
 
@@ -127,7 +127,7 @@ public class SuperArray implements ListInt {
 	System.out.println("Printing populated SuperArray mayfield...");
 	System.out.println(curtis);
 
-	ListInt mayfield = new SuperArray();
+	List mayfield = new SuperArray();
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
 
