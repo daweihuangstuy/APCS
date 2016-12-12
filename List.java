@@ -1,6 +1,6 @@
 public interface List {
-    void add( int newVal );
-    void add( int index, int newVal );
-    void remove( int index );
+    boolean add( Object newVal );
+    void add( int index, Object newVal );
+    Object remove( int index );
     int size();
 }

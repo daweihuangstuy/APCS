@@ -1,6 +1,6 @@
 //Edward Luo, Dawei Huang
 //APCS1 pd4
-//HW43 -- Array of Titanium
+//HW44 --  In America, the Driver Sits on the Left
 //2016-12-12
 
 /*==================================================
@@ -26,7 +26,7 @@ public class SuperArray implements List {
     }
 
     //output array in [a,b,c] format
-    //eg, for int[] a = {1,2,3} ...
+    //eg, for Object[] a = {1,2,3} ...
     //toString() -> "[1,2,3]"
     public String toString() 
     { 
@@ -51,14 +51,14 @@ public class SuperArray implements List {
     }
 
     //accessor method -- return value at specified index
-    public Object get( int index ) 
+    public Object get ( int index ) throws IndexOutOfBoundsException 
     {
 	/* YOUR IMPLEMENTATION HERE */
 	return _data[index];
     }
 
     //mutator method -- set index to newVal, return old value at index
-    public Object set( int index, Object newVal ) 
+    public Object set( int index, Object newVal ) throws IndexOutOfBoundsException
     {
 	/* YOUR IMPLEMENTATION HERE */
 	Object a = _data[index];
@@ -67,18 +67,19 @@ public class SuperArray implements List {
     }
 
     //adds an item after the last item
-    public void add(int newVal) {
+    public boolean add(Object newVal) {
 	if (_lastPos == _data.length-1) {
 	    expand();
 	}
 	_data[_lastPos+1] = newVal;
 	_lastPos += 1;
 	_size += 1;
+	return true;
     }
 
     //inserts an item at index
     //shifts existing elements to the right
-    public void add(int index, int newVal) {
+    public void add(int index, Object newVal) throws IndexOutOfBoundsException {
 	while (index >= _data.length || _lastPos == _data.length-1) {
 	    expand();
 	}
@@ -97,13 +98,15 @@ public class SuperArray implements List {
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove(int index) {
+    public Object remove(int index) throws IndexOutOfBoundsException {
+	Object removeObj = _data[index];
 	for( int a = index; a <= _lastPos - 1; a++ ) {
 	    _data[a] = _data[a+1];
 	}
 	_data[_lastPos] = 0;
 	_lastPos -= 1;
 	_size -= 1;
+	return removeObj;
     }
 
     //return number of meaningful items in _data
