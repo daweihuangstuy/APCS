@@ -1,4 +1,4 @@
-//Edward Luo, Dawei Huang
+//Dawei Huang
 //APCS1 pd4
 //HW44 --  In America, the Driver Sits on the Left
 //2016-12-12
