@@ -1,7 +1,7 @@
-//Dawei Huang
-//Due: 12/09/2016
-//Period 4 APCS w/ Mr. Brown Mykolyk
-//HW #42 -- Array of Grade 316_
+//Edward Luo, Dawei Huang
+//APCS1 pd4
+//HW43 -- Array of Titanium
+//2016-12-12
 
 /*==================================================
   class SuperArray version 2.0
@@ -9,8 +9,8 @@
   expansion, and read/write capability on elements.
   ==================================================*/
 
-public class SuperArray 
-{
+public class SuperArray implements ListInt {
+
     private int[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
     private int _size;    //number of meaingful values
@@ -22,7 +22,7 @@ public class SuperArray
 	/* YOUR IMPLEMENTATION HERE */
 	_data = new int[10];
 	_lastPos = -1;
-	_size = 0;	
+	_size = 0;
     }
 
     //output array in [a,b,c] format
@@ -43,90 +43,91 @@ public class SuperArray
     private void expand() 
     { 
 	/* YOUR IMPLEMENTATION HERE */
-	int[] newData = new int[_data.length * 2];
-	for ( int i = 0; i < _data.length; i += 1 ){
-		newData[i] = _data[i];
+	int[] newArray = new int[2*_data.length];
+	for (int a = 0; a < _data.length; a++) {
+	    newArray[a] = _data[a];
 	}
-	_data = newData;
+	_data = newArray;
     }
 
     //accessor method -- return value at specified index
     public int get( int index ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
-		return _data[index];
+	return _data[index];
     }
 
     //mutator method -- set index to newVal, return old value at index
     public int set( int index, int newVal ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
-		int oldVal = _data[index];
-		_data[index] = newVal;
-		return oldVal;
+	int a = _data[index];
+	_data[index] = newVal;
+	return a;
     }
-	//adds an item after the last item
-    public void add( int newVal ) 
-    { 
-	/* YOUR IMPLEMENTATION HERE */
+
+    //adds an item after the last item
+    public void add(int newVal) {
+	if (_lastPos == _data.length-1) {
+	    expand();
+	}
+	_data[_lastPos+1] = newVal;
 	_lastPos += 1;
 	_size += 1;
-	_data[_lastPos] = newVal;
     }
 
     //inserts an item at index
     //shifts existing elements to the right
-    public void add( int index, int newVal ) 
-    {
-	/* YOUR IMPLEMENTATION HERE */
-	int[] newData = new int[_data.length + 1];
-	for ( int i = 0; i < _data.length; i += 1 ){
-		newData[i] = _data[i];
+    public void add(int index, int newVal) {
+	while (index >= _data.length || _lastPos == _data.length-1) {
+	    expand();
 	}
-	_data = newData;
-	for (int i = newData.length - 1; i > index; i -= 1){
-		newData[i] = newData[i - 1];  
+	for (int a = _data.length-2; a >= index; a--) {
+	    _data[a+1] = _data[a];
 	}
-	newData[index] = newVal;
-	_size += 1;
-	_lastPos += 1;
+	_data[index] = newVal;
+	if (index > _lastPos) {
+	    _lastPos = index;
+	}
+	else {
+	    _lastPos += 1;
+	}
+	_size = _lastPos+1;
     }
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove( int index ) 
-    {
-	/* YOUR IMPLEMENTATION HERE */
-	for (int i = index; i < _data.length - 2; i += 1){
-		_data[i] = _data[i + 1];
+    public void remove(int index) {
+	for( int a = index; a <= _lastPos - 1; a++ ) {
+	    _data[a] = _data[a+1];
 	}
-	_size -= 1;
+	_data[_lastPos] = 0;
 	_lastPos -= 1;
+	_size -= 1;
     }
 
     //return number of meaningful items in _data
-    public int size() 
-    {
-	/* YOUR IMPLEMENTATION HERE */
+    public int size() {
 	return _size;
     }
 
     //main method for testing
     public static void main( String[] args ) 
     {
-	SuperArray curtis = new SuperArray();
+
+	ListInt curtis = new SuperArray();
 	System.out.println("Printing empty SuperArray curtis...");
 	System.out.println(curtis);
 
-	for( int i = 0; i < curtis._data.length; i++ ) {
-	    curtis.set(i,i*2);
-	    curtis._size++;
+	for( int i = 0; i < ((SuperArray)curtis)._data.length; i++ ) {
+	    ((SuperArray)curtis).set(i,i*2);
+	    ((SuperArray)curtis)._size++;
 	}
 
 	System.out.println("Printing populated SuperArray mayfield...");
 	System.out.println(curtis);
 
-	SuperArray mayfield = new SuperArray();
+	ListInt mayfield = new SuperArray();
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
 
@@ -155,6 +156,7 @@ public class SuperArray
 	mayfield.add(1,77);
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
+	//===========================================*/
     }//end main()
 
 }//end class SuperArray
