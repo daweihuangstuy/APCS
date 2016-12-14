@@ -1,18 +1,37 @@
+//Dawei Huang
+//APCS1 pd4
+//HW45 --  Al<B> Sorted!. 
+//2016-14-12
+
 import java.util.ArrayList;
 
-public class ALTester {
+public class ALTester <T> extends ArrayList{
     public static void main(String[] args){
-	
+	// Test 1
+		ArrayList<Integer> arr1 = new ArrayList<Integer>();
+		for (int i = 0; i <= 23; i++){
+			arr1.add(i);
+		}
+		System.out.println(testSorted(arr1));
+		
+	// Test 2
+		ArrayList<Integer> arr2 = new ArrayList<Integer>();
+		for (int i = 0; i <= 23; i++){
+			arr2.add(23 - i);
+		}
+		System.out.println(testSorted(arr2));
     }
-    public boolean testSorted(Object[] arr){
-	Object test;
-	test = arr[0];
-	for(int i = 1; i < arr.length; i++){
-	    if (arr[i] != ((int)test + 1)){
-		return false;
+	
+    public static boolean testSorted(ArrayList<Integer> arr){
+	for(int i = 0; i < 22; i++){
+	    if (arr.get(i) != arr.get(i+1) - 1){
+			return false;
 	    } 
-	    test = arr[i];
 	}
 	return true;
     }
+	
+	// public String toString(){
+		
+	// }
 }
