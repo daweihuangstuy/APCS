@@ -78,6 +78,19 @@ public class OrderedArrayList {
 		}
     }
 
+    public void addBinary(Comporable newVal){
+	int highBound = data.size();
+	int lowBound = 0;
+	ArrayList<Comparable> _temp;
+	for (Comparable x : _data){
+	    _temp.add(x);
+	}
+	while (highBound != lowBound){
+	    if _temp.size 
+	}
+    }
+
+
 
     // main method solely for testing purposes
     public static void main( String[] args ) {
