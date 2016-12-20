@@ -41,6 +41,22 @@ public class BubbleSort
     public static void bubbleSortV( ArrayList<Comparable> data ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
+	boolean testSorted = true;
+	while (testSorted == true){
+	    for(int index = 0; index < data.size() - 1; index++){
+		if(data.get(index).compareTo(data.get(index + 1)) > 0){
+		    Comparable save1 = data.get(index);
+		    Comparable save2 = data.get(index + 1);
+		    data.set(index, save2);
+		    data.set(index + 1, save1);
+		    testSorted = false;
+		}
+	    }
+	    if (testSorted == true){
+		return;
+	    }
+	    testSorted = true;
+	}
     }//end bubbleSortV
 
 
@@ -50,12 +66,29 @@ public class BubbleSort
     public static ArrayList<Comparable> bubbleSort( ArrayList<Comparable> input ) 
     {
 	/* YOUR IMPLEMENTATION HERE */
-    }//end bubbleSort
+	boolean testSorted = true;
+	while (testSorted == true){
+	    for(int index = 0; index < input.size() - 1; index++){
+		if(input.get(index).compareTo(input.get(index + 1)) > 0){
+		    Comparable save1 = input.get(index);
+		    Comparable save2 = input.get(index + 1);
+		    input.set(index, save2);
+		    input.set(index + 1, save1);
+		    testSorted = false;
+		}
+	    }
+	    if (testSorted == true){
+		return input;
+	    }
+	    testSorted = true;
+	}
+	return input;
+    }
 
 
     public static void main(String [] args)
     {
-	/*===============for VOID methods=============
+	System.out.println("\nTest for void method");
 	  ArrayList glen = new ArrayList<Integer>();
 	  glen.add(7);
 	  glen.add(1);
@@ -70,29 +103,26 @@ public class BubbleSort
 	  System.out.println( "ArrayList coco before sorting:\n" + coco );
 	  bubbleSortV(coco);
 	  System.out.println( "ArrayList coco after sorting:\n" + coco );
-	  ============================================*/
 
-	/*==========for AL-returning methods==========
-	  ArrayList glen = new ArrayList<Integer>();
-	  glen.add(7);
-	  glen.add(1);
-	  glen.add(5);
-	  glen.add(12);
-	  glen.add(3);
-	  System.out.println( "ArrayList glen before sorting:\n" + glen );
-	  ArrayList glenSorted = bubbleSort( glen );
+	  System.out.println("\nTest for return method");
+	  ArrayList glen1 = new ArrayList<Integer>();
+	  glen1.add(7);
+	  glen1.add(1);
+	  glen1.add(5);
+	  glen1.add(12);
+	  glen1.add(3);
+	  System.out.println( "ArrayList glen before sorting:\n" + glen1 );
+	  ArrayList glenSorted = bubbleSort( glen1 );
 	  System.out.println( "sorted version of ArrayList glen:\n" 
 	  + glenSorted );
-	  System.out.println( "ArrayList glen after sorting:\n" + glen );
+	  System.out.println( "ArrayList glen after sorting:\n" + glen1 );
 
-	  ArrayList coco = populate( 10, 1, 1000 );
-	  System.out.println( "ArrayList coco before sorting:\n" + coco );
-	  ArrayList cocoSorted = bubbleSort( coco );
+	  ArrayList coco1 = populate( 10, 1, 1000 );
+	  System.out.println( "ArrayList coco before sorting:\n" + coco1 );
+	  ArrayList cocoSorted = bubbleSort( coco1 );
 	  System.out.println( "sorted version of ArrayList coco:\n" 
 	  + cocoSorted );
-	  System.out.println( "ArrayList coco after sorting:\n" + coco );
-	  System.out.println( coco );
-	  ============================================*/
+	  System.out.println( "ArrayList coco after sorting:\n" + coco1 );
 
     }//end main
 
