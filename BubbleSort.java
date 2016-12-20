@@ -1,3 +1,8 @@
+//Dawei Huang
+//APCS1 pd4
+//HW49 -- Dat Bubbly Tho
+//2016-21-12
+
 /*======================================
   class BubbleSort -- implements bubblesort algorithm (vanilla version)
   ======================================*/
