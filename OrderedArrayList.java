@@ -1,7 +1,7 @@
 //Dawei Huang
 //APCS1 pd4
-//HW46 -- ascending 
-//12/15/16
+//HW48 -- Halving the Halves
+//12/20/16
 
 /*============================================
   class OrderedArrayList
@@ -78,23 +78,51 @@ public class OrderedArrayList {
 		}
     }
 
-    public void addBinary(Comporable newVal){
-	int highBound = data.size();
-	int lowBound = 0;
-	ArrayList<Comparable> _temp;
-	for (Comparable x : _data){
-	    _temp.add(x);
-	}
-	while (highBound != lowBound){
-	    if _temp.size 
-	}
-    }
+    public void addBinary(Comparable newVal){
+		int median;
+		int highBound = _data.size() - 1;
+		int lowBound = 0;
+
+		if (_data.size() == 0){
+				_data.add(newVal);
+				return;
+			}
+		if((int)_data.get(_data.size() - 1) < (int)newVal){
+			_data.add(newVal);
+			return;
+		}
+		
+		if((int)_data.get(0) > (int)newVal){
+			_data.add(0, newVal);
+			return;
+		}
+		
+		while (highBound != lowBound){
+			median = (lowBound + highBound)/2;
+			if ((int)_data.get(median) == (int)newVal){
+				_data.add(median, newVal);
+				return;
+			}
+			else if ((int)_data.get(median) < (int)newVal){
+				lowBound = median;
+			}
+			else if ((int)_data.get(median) > (int)newVal){
+				highBound = median;
+			}
+			if(lowBound + 1 == highBound){
+				_data.add(highBound, newVal);
+				return;
+			}
+		}	
+		_data.add(lowBound, newVal);
+		}
+    
 
 
 
     // main method solely for testing purposes
     public static void main( String[] args ) {
-
+		
 	OrderedArrayList Franz = new OrderedArrayList();
 
 	System.out.println("\nValues to add via addLinear() calls:");
@@ -109,6 +137,25 @@ public class OrderedArrayList {
 
 	System.out.println("\nafter population via addLinear() calls:");
 	System.out.println( Franz );
+	System.out.println();
+
+	//------------------------------------------------------------------
+	
+	OrderedArrayList Bert = new OrderedArrayList();
+
+	System.out.println("\nValues to add via addBinary() calls:");
+
+	// testing binary search
+	System.out.println( Bert );
+	for( int i = 0; i < 15; i++ ) {
+	    int valToAdd = (int)( 50 * Math.random() );
+	    System.out.println( valToAdd );
+	    Bert.addBinary( valToAdd );
+		System.out.println(Bert._data);
+	}
+
+	System.out.println("\nafter population via addBinary() calls:");
+	System.out.println( Bert );
 	System.out.println();
 
     }
