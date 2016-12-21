@@ -41,25 +41,27 @@ public class SelectionSort
 	//note: this version places greatest value at rightmost end,
 
 	//maxPos will point to position of SELECTION (greatest value)
-	int maxPos;
 	int currentPos = data.size() - 1;
+	int maxPos = -1;
 	/* YOUR IMPLEMENTATION HERE */
 	while (currentPos > 0){
-	    for (int i = currentPos - 1; i > 0; i--){
-		maxPos = curretPos;
-		if (data.get(currentPos).Comparable(data.get(i)) < 0){
-		    maxPos = i;
+	    for (int i = currentPos - 1; i >= 0; i--){
+		if (data.get(currentPos).compareTo(data.get(i)) < 0){
+		    if (data.get(i).compareTo(data.get(maxPos)) > 0){
+			maxPos = i;
+		    }
 		}
 	    }
 	    if (maxPos != currentPos){
 		Comparable data1 = data.get(currentPos);
 		Comparable data2 = data.get(maxPos);
 		data.set(maxPos, data1);
-		data.ser(currentPos, data2);
+		data.set(currentPos, data2);
 	    }
+	    currentPos -= 1;
+	    System.out.println(data);
 	}
-}
-    }//end selectionSort
+}//end selectionSort
 
 
     // ArrayList-returning selectionSort
@@ -68,7 +70,11 @@ public class SelectionSort
     public static ArrayList<Comparable> selectionSort( ArrayList<Comparable> input ) 
 {
 	/* YOUR IMPLEMENTATION HERE */
-    }//end selectionSort 
+    ArrayList<Comparable> bert = input;
+    selectionSortV(bert);
+    return bert;
+
+}//end selectionSort 
 
 
     public static void main( String [] args ) 
