@@ -69,6 +69,7 @@ public class SelectionSort
 	System.out.println( "ArrayList glen after sorting:\n" + glen );
 
 	/*===============for VOID methods=============
+	System.out.println("\nTest for VOID methods");
 	ArrayList coco = populate( 10, 1, 1000 );
 	System.out.println( "ArrayList coco before sorting:\n" + coco );
 	selectionSortV(coco);
@@ -76,6 +77,7 @@ public class SelectionSort
 	  ============================================*/
 
 	/*==========for AL-returning methods==========
+	System.out.println("\nTest for AL-returning methods");
     	ArrayList glen = new ArrayList<Integer>();
 	glen.add(7);
 	glen.add(1);
