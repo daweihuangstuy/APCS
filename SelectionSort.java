@@ -42,7 +42,23 @@ public class SelectionSort
 
 	//maxPos will point to position of SELECTION (greatest value)
 	int maxPos;
+	int currentPos = data.size() - 1;
 	/* YOUR IMPLEMENTATION HERE */
+	while (currentPos > 0){
+	    for (int i = currentPos - 1; i > 0; i--){
+		maxPos = curretPos;
+		if (data.get(currentPos).Comparable(data.get(i)) < 0){
+		    maxPos = i;
+		}
+	    }
+	    if (maxPos != currentPos){
+		Comparable data1 = data.get(currentPos);
+		Comparable data2 = data.get(maxPos);
+		data.set(maxPos, data1);
+		data.ser(currentPos, data2);
+	    }
+	}
+}
     }//end selectionSort
 
 
