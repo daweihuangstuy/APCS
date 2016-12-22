@@ -42,9 +42,10 @@ public class SelectionSort
 
 	//maxPos will point to position of SELECTION (greatest value)
 	int currentPos = data.size() - 1;
-	int maxPos = -1;
+	int maxPos;
 	/* YOUR IMPLEMENTATION HERE */
 	while (currentPos > 0){
+		maxPos = currentPos;
 	    for (int i = currentPos - 1; i >= 0; i--){
 		if (data.get(currentPos).compareTo(data.get(i)) < 0){
 		    if (data.get(i).compareTo(data.get(maxPos)) > 0){
@@ -58,8 +59,8 @@ public class SelectionSort
 		data.set(maxPos, data1);
 		data.set(currentPos, data2);
 	    }
-	    currentPos -= 1;
-	    System.out.println(data);
+	    // System.out.println(data);
+		currentPos -= 1;
 	}
 }//end selectionSort
 
@@ -90,36 +91,36 @@ public class SelectionSort
 	selectionSortV(glen);
 	System.out.println( "ArrayList glen after sorting:\n" + glen );
 
-	/*===============for VOID methods=============
+
 	System.out.println("\nTest for VOID methods");
 	ArrayList coco = populate( 10, 1, 1000 );
 	System.out.println( "ArrayList coco before sorting:\n" + coco );
 	selectionSortV(coco);
 	System.out.println( "ArrayList coco after sorting:\n" + coco );
-	  ============================================*/
 
-	/*==========for AL-returning methods==========
+
+
 	System.out.println("\nTest for AL-returning methods");
-    	ArrayList glen = new ArrayList<Integer>();
-	glen.add(7);
-	glen.add(1);
-	glen.add(5);
-	glen.add(12);
-	glen.add(3);
-	System.out.println( "ArrayList glen before sorting:\n" + glen );
-	ArrayList glenSorted = selectionSort( glen );
-	System.out.println( "sorted version of ArrayList glen:\n" 
+    	ArrayList glen1 = new ArrayList<Integer>();
+	glen1.add(7);
+	glen1.add(1);
+	glen1.add(5);
+	glen1.add(12);
+	glen1.add(3);
+	System.out.println( "ArrayList glen1 before sorting:\n" + glen1 );
+	ArrayList glenSorted = selectionSort( glen1 );
+	System.out.println( "sorted version of ArrayList glen1:\n" 
 			    + glenSorted );
-	System.out.println( "ArrayList glen after sorting:\n" + glen );
+	System.out.println( "ArrayList glen1 after sorting:\n" + glen1 );
 
-      	ArrayList coco = populate( 10, 1, 1000 );
-	System.out.println( "ArrayList coco before sorting:\n" + coco );
-	ArrayList cocoSorted = selectionSort( coco );
-	System.out.println( "sorted version of ArrayList coco:\n" 
+      	ArrayList coco1 = populate( 10, 1, 1000 );
+	System.out.println( "ArrayList coco1 before sorting:\n" + coco1 );
+	ArrayList cocoSorted = selectionSort( coco1 );
+	System.out.println( "sorted version of ArrayList coco1:\n" 
 			    + cocoSorted );
-	System.out.println( "ArrayList coco after sorting:\n" + coco );
-	System.out.println( coco );
-	  ============================================*/
+	System.out.println( "ArrayList coco1 after sorting:\n" + coco1 );
+	System.out.println( coco1 );
+
 
     }//end main
 
