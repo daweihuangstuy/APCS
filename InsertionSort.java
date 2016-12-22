@@ -42,7 +42,9 @@ public class InsertionSort
 	int sortReg = 1;
 	boolean regSorted = false;
 	while (sortReg < data.size()){
-	    for (int i = sortReg - 1; sortreg
+	    for (int i = sortReg - 1; sortReg >= 0; i--){
+		C
+	    }
 	}
 
     }//end insertionSortV
