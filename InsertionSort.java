@@ -1,3 +1,8 @@
+//Dawei Huang
+//APCS1 pd4
+//HW51 -- Poker Face
+//12/22/16
+
 /*======================================
   class InsertionSort -- implements InsertionSort algorithm
   ======================================*/
