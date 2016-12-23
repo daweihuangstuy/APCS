@@ -1,3 +1,8 @@
+//Dawei Huang
+//APCS1 pd4
+//HW50 -- Selection, Natch
+//12/22/16
+
 /*======================================
   class SelectionSort -- implements SelectionSort algorithm
   ======================================*/

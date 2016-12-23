@@ -42,11 +42,20 @@ public class InsertionSort
 	int sortReg = 1;
 	boolean regSorted = false;
 	while (sortReg < data.size()){
-	    for (int i = sortReg - 1; sortReg >= 0; i--){
-		C
+	    for (int i = sortReg; i > 0; i--){
+			if (data.get(i).compareTo(data.get(i - 1)) < 0){
+				Comparable data1 = data.get(i);
+				Comparable data2 = data.get(i-1);
+				data.set(i, data2);
+				data.set(i-1, data1);
+			}
+			else{
+				break;
+			}
 	    }
+		// System.out.println(data);
+		sortReg += 1;
 	}
-
     }//end insertionSortV
 
 
@@ -56,13 +65,16 @@ public class InsertionSort
     public static ArrayList<Comparable> insertionSort( ArrayList<Comparable> input ) 
 {
 	/* YOUR IMPLEMENTATION HERE */	
+	ArrayList<Comparable> Bert = input;
+	insertionSortV(input);
+	return input;
     }//end insertionSort
 
 
     public static void main( String [] args ) 
 {
 
-	/*===============for VOID methods=============
+	//===============for VOID methods=============
 	System.out.println("\n*** Testing sort-in-place (void) version... *** ");
 	ArrayList glen = new ArrayList<Integer>();
 	glen.add(7);
@@ -78,31 +90,27 @@ public class InsertionSort
 	System.out.println( "\nArrayList coco before sorting:\n" + coco );
 	insertionSortV(coco);
 	System.out.println( "\nArrayList coco after sorting:\n" + coco );
-	  ============================================*/
 
-	/*==========for AL-returning methods==========
+	//==========for AL-returning methods==========
 	System.out.println( "*** Testing non-void version... *** " );
-    	ArrayList glen = new ArrayList<Integer>();
-	glen.add(7);
-	glen.add(1);
-	glen.add(5);
-	glen.add(12);
-	glen.add(3);
-	System.out.println( "\nArrayList glen before sorting:\n" + glen );
-	ArrayList glenSorted = insertionSort( glen );
-	System.out.println( "\nsorted version of ArrayList glen:\n" 
+    	ArrayList glen1 = new ArrayList<Integer>();
+	glen1.add(7);
+	glen1.add(1);
+	glen1.add(5);
+	glen1.add(12);
+	glen1.add(3);
+	System.out.println( "\nArrayList glen1 before sorting:\n" + glen1 );
+	ArrayList glenSorted = insertionSort( glen1 );
+	System.out.println( "\nsorted version of ArrayList glen1:\n" 
 			    + glenSorted );
-	System.out.println( "\nArrayList glen after sorting:\n" + glen );
+	System.out.println( "\nArrayList glen1 after sorting:\n" + glen1 );
 
-      	ArrayList coco = populate( 10, 1, 1000 );
-	System.out.println( "\nArrayList coco before sorting:\n" + coco );
-	ArrayList cocoSorted = insertionSort( coco );
-	System.out.println( "\nsorted version of ArrayList coco:\n" 
+      	ArrayList coco1 = populate( 10, 1, 1000 );
+	System.out.println( "\nArrayList coco1 before sorting:\n" + coco1 );
+	ArrayList cocoSorted = insertionSort( coco1 );
+	System.out.println( "\nsorted version of ArrayList coco1:\n" 
 			    + cocoSorted );
-	System.out.println( "\nArrayList coco after sorting:\n" + coco );
-	System.out.println( coco );
-	  ============================================*/
-
+	System.out.println( "\nArrayList coco1 after sorting:\n" + coco1 );
+	System.out.println( coco1 );
     }//end main
-
 }//end class InsertionSort
