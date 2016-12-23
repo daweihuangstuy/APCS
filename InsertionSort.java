@@ -45,7 +45,6 @@ public class InsertionSort
     {
 	/* YOUR IMPLEMENTATION HERE */	
 	int sortReg = 1;
-	boolean regSorted = false;
 	while (sortReg < data.size()){
 	    for (int i = sortReg; i > 0; i--){
 			if (data.get(i).compareTo(data.get(i - 1)) < 0){
