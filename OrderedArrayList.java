@@ -21,11 +21,17 @@ public class OrderedArrayList {
     private ArrayList<Comparable> _data;
 
     // default constructor initializes instance variable _data
+	// worst case scenario: 1
+	// best case scenario: 1
+	// categorization: constant
     public OrderedArrayList() {
 		_data = new ArrayList<Comparable>();
     }
 
 	//toString method
+	// worst case scenario: n
+	// best case scenario: 1
+	// categorization: linear
     public String toString() { 
 		String retrString = "";
 		for(int i = 0; i < _data.size() - 1; i++){
@@ -35,6 +41,9 @@ public class OrderedArrayList {
     }
 
 	//removes Objects of type Comparable at a provided index
+	// worst case scenario: 1
+	// best case scenario: 1
+	// categorization: constant
     public Comparable remove( int index ) { 
 		Comparable data = _data.get(index);
 		_data.remove(index);
@@ -42,11 +51,17 @@ public class OrderedArrayList {
     }
 		
 	// returns the size of the data
+	// worst case scenario: 1
+	// best case scenario: 1
+	// categorization: constant
     public int size() {
 		return _data.size();
     }
 
     //returns the object of type Comparable at a specified index
+	// worst case scenario: 1
+	// best case scenario: 1
+	// categorization: constant
     public Comparable get( int index ) { 
 		return _data.get(index);
     }
@@ -57,6 +72,9 @@ public class OrderedArrayList {
     // inserts newVal at the appropriate index
     // maintains ascending order of elements
     // uses a linear search to find appropriate index
+	// worst case scenario: (n(n+1))/2
+	// best case scenario: n
+	// categorization: quadratic
     public void addLinear( Comparable newVal ) { 
 		int targetIndex = 0;
 		if (_data.size() == 0){
@@ -78,6 +96,9 @@ public class OrderedArrayList {
 		}
     }
 
+	// worst case scenario: log2(n)
+	// best case scenario: 1
+	// categorization: logarithmic
     public void addBinary(Comparable newVal){
 		int median;
 		int highBound = _data.size() - 1;
