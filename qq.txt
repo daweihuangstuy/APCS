@@ -1,0 +1,57 @@
+// Dawei Huang
+// Due 2017-02-16
+// APCS2 Period 5
+// HW #07: Xiang’s Troubles
+
+2x2: This graph is solvable for the case that you place only one queen on the board 
+because the board contains at least an area of one to place the queen in.Once you 
+place one queen on the board, the board can be rotated in a fashion such that the 
+queen can occupy any location on the graph. Once the queen is placed on the graph, 
+you would know for sure that the rest of the graph is closed to placing any subsequent 
+queens.
+
+3x3: Since a 3x3 graph contains the 2x2 graph, we know for sure that it can contain a queen. 
+Placing the queen at the middle of the grap would not allow you to place a second queen. 
+Placing the queen in the corner would allow you to put another queen at the adjacent side. 
+Placing the queen along the side would allow you to place the queen at the two farthest corners. 
+We considered all cases and the most queens we can place on the graph is two queens.
+
+4x4: For this graph we can place a queen at the first column third row, second column first row,
+third column fourth row, and fourth column third row. Since we know that a graph of size nxn 
+we can place at most n queens because each queen must occupy its own row and own column, it's 
+natural maximum is six queens. Since we wrere able to place 4 queens, the maximum amount of 
+queens you can place in this graph is 4.
+ 
+5x5: For this graph we can show that five queens can be placed in a 5x5 graph by building off of 
+the 4x4 graph. For the 4x4 graph, we have already shown in the previous example that four queens 
+can be placed in the graph. Looking at the 4x4 graph, I had noticed that the diagonals are not 
+occupied by any queens so it is no queen could attack another queen using the diagonals. I added 
+a row on the top and I added a column on the right and I had a queen safely occupy the top right 
+most vertex. Since we know that we can place at most n queens in an nxn graph we can be sure that 
+five is the most queens that we can place in this graph.
+
+6x6: From the previous example, we know for sure that we can place at least 5 queens on the map. For 
+this graph, I came up with a solution that looks like two parallel rows of queens on the chess map
+arranged in a fashion that no two queens can occupy the same rows nor columns. I had tried to
+institute this method for my previous graphs but it didnt work until I tried to experiment on it with
+this 6x6 graph. Because of this configuration, I was able to place 6 queens on the chess board in such
+a way that they cannot directly attack one another with one move. For chess boards with higher 2D
+dimensions, I feel like this configuration with two parallel rows of queens with some minor changes,
+would be a consistent solution.
+
+7x7: I was not able to figure out a solution in which I organize seven queens on the chess board without
+the possibility of them being able to attack each other. I had initially tried the method that I had 
+mentioned in constructing my previous class but I was unable to configure seven queens in the fashion of
+two parallel rows. I had tried to place the queens in slightly different configurations before discarding
+my idea for constructing this graph. I then tried building this graph off of the 6x6 graph and that did 
+not work well for me as well. Thus the most queens that I am able to place on this graph given that they
+are not able to directly attack each other is six queens.
+
+8x8: When I was working on this graph, I am excited to say that I was able to get a working configuration in
+one of my first tries following the pattern that I had mentioned in my 6x6 graph. For this graph I was unable
+to form a perfect row of queens but after some modifications, I was able to preserve this configuration with
+the exception of two queens which I was able to strategically place somewhere near the middle. Since I had some
+extra time I decided to come up with an additional solution to this graph. I came up with a configuration where
+my queen chess pieces very vaguely resemble a V with two chess pieces straying towards opposite corners. I was 
+able to come up with a solution in relatively little time when compared to the time that I had spent working on
+the previous graph.
