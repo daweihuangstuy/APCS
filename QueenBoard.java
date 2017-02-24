@@ -299,7 +299,7 @@ public class QueenBoard
     public static void main( String[] args )
     {
 	double startTime = System.currentTimeMillis();
-	QueenBoard b = new QueenBoard(5);
+	QueenBoard b = new QueenBoard(7);
 	b.solve();
 	b.printSolution();
 	double endTime = System.currentTimeMillis();
