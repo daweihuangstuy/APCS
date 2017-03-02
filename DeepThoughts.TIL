@@ -1,0 +1,54 @@
+Dawei Huang
+APCS2 pd5
+HW11 -- Probing the Depths...
+2017-03-28
+
+
+In a plaintext file with proper heading and a reprinting of your Knight’s Tour execution time measurements, respond to each prompt below.
+Section Uno:
+
+Mean execution times for boards of size n*n:
+  n=5   _0.365_s    over _10_ executions 
+  n=6   _0.468_s    over _10_ executions
+  n=7   _1.086_s    over _10_ executions
+  n=8   _1.198_s    over _10_ executions
+  
+Q1: From any starting position, can an open tour always be found? Explain.
+From any starting position in a board that is larger than or equal to 5, an open tour can always be found
+because if you were to construct the graphical representation of the tour, you will find that every single
+location on the chessboard is connected with at least 2 and at most 8 other locations. Since an open tour
+does not require the knight to be able to return to his starting position, the graphical representation
+need not contain cycles. Given the fact that the algorithm was able to find a solution or chessboards of 
+size 5 to 8, I would believe that quantity of possible tours would justify the fact that an open tour is
+found. In addition, I have located only open tours when I checked the results that my algorithm had returned.
+
+Q2: Same, but for closed tour.
+I do not believe that from any starting position in a chessboard of dimension 5x5 to 8x8 that a closed tour may
+always be found. In order for a closed tour to occur, you would have to impose the conditions of a open tour in
+addition to the condition that the kniht must be able to directly return to his starting position after the tour.
+If you were to represent the chessboard graphically, you would see that in order for a closed tour to occur, there
+must be a cycle that would include every point on the graph. For a cycle like that to occur would seem extrodinary,
+but completely within the realm of possibility. My algorithm did not produce any open tours when I ran it. Although
+I believe than an open tour is possible for some chessboard of a given dimensions, I do not believe that it could be
+found in every chessboard example.
+
+Q3: How do you explain the increase in execution time as n increases?
+I believe than the execution time runs in an nlogn fashion. After graphing my results, I noticed that the resulting
+graph corresponds best to an nlogn runtime.
+
+Q4: Thoughts on optimization?
+When testing to see the runtime of my algorithm, I commented out all my print statements because those procedures are
+very time consuming for the system to carry out. After I did this, the runtime dramatically decreased to the point where
+the solutions to chessboards of large dimensions can be found in seconds. Besides doing this, I did not modify the graph
+the code at all in order to somehow optimize its runtime. I believe that there exists more efficient algorithms than this
+brute-force algorithm which determines a solution by reviewing and checking all possible cases.
+
+
+Section Deux:
+State your cleanest algo for finding your way out of a maze.
+My algorithm for finding my way out of a maze would be very similar to the Knight's tour algorithm that we had already finished.
+The algorithm that I had conceived would be recursive in nature. First you would start at the start block and check you immediate
+surroundings to see if there is either a path or a wall. If a wall is found, I will mark the second path with the number immediately
+greater than its own in order to be able to visualize the path once my algorithm is completed. In the places where there are path, I 
+would run the same algorithm again to check the surroundings for with walls or paths. This algorithm would continue indefinitely until
+it has found a path to the exit. My program will end if all possibilities are exhausted.
