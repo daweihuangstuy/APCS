@@ -1,7 +1,7 @@
-/*Dawei Huang
-  APCS2 pd5
-  HW12 -- We On Award Tour with Muhammad my manThinkers of the Corn, Do You Hear the People SING!
-  2017-03-06*/
+//Team LiterallyPutAnything -- Dawei Huang, Brooke Jin, Angel Ng
+//APCS2 pd5
+//HW12 -- Thinkers of the Corn
+//2017-03-06
 
 /***
  * SKEELTON for class 
@@ -15,15 +15,14 @@
  * 
  * ALGORITHM for finding exit from starting position:
  *  As long as it is on the path and within bounds, check up, right, left, and down for valid paths.
- *  Continue checking and create a visited path.
- *  If no valid paths are found, reset the square and backtrack until a different path is found.
+ *  Continue checking and create a correct path.
+ *  If no valid paths are found, set the square as visited and backtrack until a different path is found.
  *  Repeat until a valid path to the exit is found.
  ***/
 
 //enable file I/O
 import java.io.*;
 import java.util.*;
-
 
 class MazeSolver 
 {
@@ -37,7 +36,6 @@ class MazeSolver
     final private char WALL =         ' ';
     final private char EXIT =         '$';
     final private char VISITED_PATH = '.';
-
 
     public MazeSolver( String inputFile ) 
     {
@@ -80,7 +78,6 @@ class MazeSolver
 	solved = false;
     }//end constructor
 
-
     public String toString() 
     {
 	//send ANSI code "ESC[0;0H" to place cursor in upper left
@@ -97,7 +94,6 @@ class MazeSolver
 	return retStr;
     }
 
-
     //helper method to keep try/catch clutter out of main flow
     private void delay( int n ) 
     {
@@ -108,7 +104,6 @@ class MazeSolver
 	}
     }
 
-
     /*********************************************
      * void solve(int x,int y) -- recursively finds maze exit (depth-first)
      * @param x starting x-coord, measured from left
@@ -118,10 +113,10 @@ class MazeSolver
 
 	delay(50); //slow it down enough to be followable
 
-	System.out.println(this);
-
-	if (solved)
+	if (solved) 
 	    System.exit(0);
+
+	System.out.println(this);
 	
 	//primary base case
 	if ( x < 0 || y < 0 || x >= maze.length || y >= maze.length ) {
@@ -129,7 +124,6 @@ class MazeSolver
 	}
 	//other base case(s)...
 	else if (maze[x][y] == '$' ) {
-	    maze[x][y] = '@';
 	    solved = true;
 	}
 	else if ( maze[x][y] != '#' ) {
@@ -140,14 +134,14 @@ class MazeSolver
 	}
 	//recursive reduction
 	else {
-	    maze[x][y] = '.';
+	    maze[x][y] = '@';
 
 	    solve(x+1,y);
 	    solve(x,y+1);
 	    solve(x-1,y);
 	    solve(x,y-1);
 
-	    maze[x][y] = '#';
+	    maze[x][y] = '.';
 	}
     }
 
@@ -155,7 +149,6 @@ class MazeSolver
     public boolean onPath( int x, int y) { return maze[x][y] == PATH; }
 
 }//end class MazeSolver
-
 
 public class Maze 
 {
@@ -174,7 +167,6 @@ public class Maze
 	    //drop hero into the maze (coords must be on path)
 	    //comment next line out when ready to randomize startpos
 	    //ms.solve( 4, 2 ); 
-
 	    
 	    //drop our hero into maze at random location on path
 	    //the Tim Diep way:
@@ -186,7 +178,6 @@ public class Maze
 		startY = r.nextInt( 25 );
 	    }
 	    ms.solve( startX, startY );
-	    
 	    
 	} catch( Exception e ) { 
 	    System.out.println( "Error reading input file." );
