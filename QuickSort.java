@@ -56,7 +56,24 @@ public class QuickSort
 	return retArr;
     }
     //--------------^  HELPER METHODS  ^--------------
-
+	
+//Formerly mysterion:
+    public static int partition(int [] arr, int lb, int ub, int pivot){
+	// lb = lower bound, ub = upper bound
+	int v = arr[pivot];
+	swap(arr, ub, pivot);
+	int s = lb;
+	for (int i = lb; i < ub; i++){
+	    if (arr[i] < v) {
+		swap(arr, s, i);
+		s++;
+	    }
+	}
+	swap(arr, ub, s);
+	//printArray(arr);
+	//System.out.println(" Returns: "+ s +"\n"); //prints final value of s
+	return s;
+}
 
 
     /*****************************************************
