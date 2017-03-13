@@ -1,3 +1,6 @@
+//Dawei Huang
+//APCS2 pd5
+
 /*****************************************************
  * interface List -- subset of actual Java List interface
  * Specifies actions a List must be able to perform.
