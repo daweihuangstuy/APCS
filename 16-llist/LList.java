@@ -1,7 +1,7 @@
 //Dawei Huang
 //APCS2 pd5
-//HW1016b -- Rockin Through the Night
-//2017-03-13
+//HW17 -- Give and Take
+//2017-03-14
 
 /*****************************************************
  * class LList
@@ -60,6 +60,40 @@ public class LList implements List
 	}
     //return number of nodes in list
     public int size() { return _size; } 
+	
+	//insert a node containing newVal at position index
+    public void add( int index, String newVal ){
+		LLNode Node = _head;
+		if(index == 0){
+			LLNode oldHead = _head;
+			_head = new LLNode(newVal, oldHead);
+			_size += 1;
+			return;
+		}
+		for (int i = index; i > 1; i--){
+			Node = Node.getNext();
+		}
+		LLNode oldNext = Node.getNext();
+		Node.setNext(new LLNode (newVal, oldNext));	
+		_size += 1;
+	} 
+
+    //remove node at pos index, return its cargo
+    public String remove( int index ){
+		LLNode Node = _head;
+		if(index == 0){
+			_head = _head.getNext();
+			_size -= 1;
+			return _head.getCargo();
+		}
+		for (int i = index; i > 1; i--){
+			Node = Node.getNext();
+		}
+		LLNode oldNext = Node.getNext();
+		Node.setNext(Node.getNext().getNext());
+		_size -= 1;
+		return Node.getCargo();
+	}
 
     //--------------^  List interface methods  ^--------------
 
@@ -108,6 +142,18 @@ public class LList implements List
 	System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
 
 	System.out.println( james );
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	//test remove at index method
+	james.remove(2);
+	System.out.println( "remove index 2");
+	System.out.println( james );
+	
+	//test add at index method
+	james.add(2, "bungalow");
+	System.out.println( "add bungalow to index 2");
+	System.out.println( james );
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
 
