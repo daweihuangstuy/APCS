@@ -29,7 +29,7 @@ public class LList implements List
     /* YOUR IMPLEMENTATIONS HERE */
 	public boolean add( String x ){
 		if(_head == null){
-			_head = new DLLNode(x, null);
+			_head = new DLLNode(null, x, null);
 			_size += 1;
 			return true;
 		}
@@ -37,7 +37,7 @@ public class LList implements List
 		while(Node.getNext() != null){
 			Node = Node.getNext();
 		}
-		Node.setNext( new DLLNode( x, null ) );
+		Node.setNext( new DLLNode(null, x, null ) );
 		_size += 1;
 		return true;
 	}	
@@ -66,7 +66,7 @@ public class LList implements List
 		DLLNode Node = _head;
 		if(index == 0){
 			DLLNode oldHead = _head;
-			_head = new DLLNode(newVal, oldHead);
+			_head = new DLLNode(null, newVal, oldHead);
 			_size += 1;
 			return;
 		}
@@ -74,7 +74,7 @@ public class LList implements List
 			Node = Node.getNext();
 		}
 		DLLNode oldNext = Node.getNext();
-		Node.setNext(new DLLNode (newVal, oldNext));	
+		Node.setNext(new DLLNode (null, newVal, oldNext));	
 		_size += 1;
 	} 
 
