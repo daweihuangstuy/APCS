@@ -1,19 +1,19 @@
 //Dawei Huang
 //APCS2 pd5
-//HW17 -- Give and Take
-//2017-03-14
+//HW18b -- On the DLL
+//2017-03-16
 
 /*****************************************************
  * class LList
  * skeleton
- * Implements a linked list of LLNodes.
+ * Implements a linked list of DLLNodes.
  *****************************************************/
 
 public class LList implements List 
 { //your homemade List.java must be in same dir
 
     //instance vars
-    private LLNode _head;
+    private DLLNode _head;
     private int _size;
 
     // constructor -- initializes instance vars
@@ -29,21 +29,21 @@ public class LList implements List
     /* YOUR IMPLEMENTATIONS HERE */
 	public boolean add( String x ){
 		if(_head == null){
-			_head = new LLNode(x, null);
+			_head = new DLLNode(x, null);
 			_size += 1;
 			return true;
 		}
-		LLNode Node = _head;
+		DLLNode Node = _head;
 		while(Node.getNext() != null){
 			Node = Node.getNext();
 		}
-		Node.setNext( new LLNode( x, null ) );
+		Node.setNext( new DLLNode( x, null ) );
 		_size += 1;
 		return true;
 	}	
 
     public String get( int i ){
-		LLNode Node = _head;
+		DLLNode Node = _head;
 		for (int a = i; a > 0; a--){
 			Node = Node.getNext();
 		}
@@ -51,7 +51,7 @@ public class LList implements List
 	}
 	
     public String set( int i, String x ){
-		LLNode Node = _head;
+		DLLNode Node = _head;
 		for (int a = i; a > 0; a--){
 			Node = Node.getNext();
 		}
@@ -63,24 +63,24 @@ public class LList implements List
 	
 	//insert a node containing newVal at position index
     public void add( int index, String newVal ){
-		LLNode Node = _head;
+		DLLNode Node = _head;
 		if(index == 0){
-			LLNode oldHead = _head;
-			_head = new LLNode(newVal, oldHead);
+			DLLNode oldHead = _head;
+			_head = new DLLNode(newVal, oldHead);
 			_size += 1;
 			return;
 		}
 		for (int i = index; i > 1; i--){
 			Node = Node.getNext();
 		}
-		LLNode oldNext = Node.getNext();
-		Node.setNext(new LLNode (newVal, oldNext));	
+		DLLNode oldNext = Node.getNext();
+		Node.setNext(new DLLNode (newVal, oldNext));	
 		_size += 1;
 	} 
 
     //remove node at pos index, return its cargo
     public String remove( int index ){
-		LLNode Node = _head;
+		DLLNode Node = _head;
 		if(index == 0){
 			_head = _head.getNext();
 			_size -= 1;
@@ -89,7 +89,7 @@ public class LList implements List
 		for (int i = index; i > 1; i--){
 			Node = Node.getNext();
 		}
-		LLNode oldNext = Node.getNext();
+		DLLNode oldNext = Node.getNext();
 		Node.setNext(Node.getNext().getNext());
 		_size -= 1;
 		return Node.getCargo();
@@ -101,7 +101,7 @@ public class LList implements List
     // override inherited toString
     public String toString() { 
 	String retStr = "HEAD->";
-	LLNode tmp = _head; //init tr
+	DLLNode tmp = _head; //init tr
 	while( tmp != null ) {
 	    retStr += tmp.getCargo() + "->";
 	    tmp = tmp.getNext();
