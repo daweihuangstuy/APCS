@@ -9,7 +9,7 @@
  * Implements a linked list of DLLNodes.
  *****************************************************/
 
-public class LList implements List 
+public class LList implements List<String> 
 { //your homemade List.java must be in same dir
 
     //instance vars

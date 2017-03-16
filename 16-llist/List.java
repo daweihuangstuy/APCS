@@ -1,20 +1,16 @@
-//Dawei Huang
-//APCS2 pd5
-
 /*****************************************************
- * interface List -- subset of actual Java List interface
+ * interface List
  * Specifies actions a List must be able to perform.
- * If present in local dir, will take precedence over Java's 
- * built-in List interface.
+ * Now generically typed. ( T is a placeholder. )
  *****************************************************/
 
-public interface List { 
+public interface List<T>{ 
 
-    public boolean add( String x ); 
+    public boolean add( T x ); 
 
-    public String get( int i ); 
+    public T get( int i ); 
 
-    public String set( int i, String x ); 
+    public T set( int i, T x ); 
 
     public int size(); 
 }
