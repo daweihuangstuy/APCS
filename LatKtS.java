@@ -3,7 +3,6 @@
 // HW23 -- Stack: What Is It Good For?               well, this. 
 // 2017-03-24
 
-
 /*****************************************************
  * class LatKtS (LatKeysToSuccess)
  * Driver class for Latkes.
@@ -89,7 +88,7 @@ public class LatKtS
         System.out.println(allMatched( "](){([])}" ) ); //false
         System.out.println(allMatched( "(){([])}(" ) ); //false
         System.out.println(allMatched( "()[[]]{{{{((([])))}}}}" ) ); //true
-          //^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^
+    //^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^
     }
 
 }//end class LatKtS
