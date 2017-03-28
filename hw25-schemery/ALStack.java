@@ -1,3 +1,8 @@
+// Dawei Huang
+// APCS2 pd5
+// HW25 -- What a Racket
+// 2017-03-28
+
 /*****************************************************
  * class ALStack
  * Implements a stack, generically typed.
@@ -14,44 +19,57 @@ public class ALStack<T> implements Stack<T>
     public ALStack() 
     { 
 	/* YOUR IMPLEMENTATION HERE*/
+	_stack = new ArrayList<T>();
     }
 
     //overloaded constructor to allow for init capacity
     public ALStack( int size ) 
     { 
 	/* YOUR IMPLEMENTATION HERE*/
+	_stack = new ArrayList<T>(size);
     }
 
     //means of insertion
     public void push( T s ) 
     {
 	/* YOUR IMPLEMENTATION HERE*/
+	_stack.add(s);
     }
 
     //means of viewing top element without removing
     public T peek( ) 
     { 
 	/* YOUR IMPLEMENTATION HERE*/
+	if(_stack.size() == 0){
+		return null;
+	}
+	return _stack.get(_stack.size() - 1);	
     }
 
     //means of removal
     public T pop( ) 
     { 
 	/* YOUR IMPLEMENTATION HERE*/
+	if(_stack.size() == 0){
+		return null;
+	}
+	T tempStor = _stack.get(_stack.size() - 1);	
+	_stack.remove(_stack.size() - 1);
+	return tempStor;
     }
-
 
     //chk for emptiness
     public boolean isEmpty() 
     {
 	/* YOUR IMPLEMENTATION HERE*/
+	return _stack.size() == 0;
     }
 
 
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  Stack<String> tastyStack = new ALStack<String>();
 
 	  tastyStack.push("aoo");
@@ -108,7 +126,7 @@ public class ALStack<T> implements Stack<T>
 	  System.out.println( "peek: " + tastyStack.peek() );
 	  System.out.println( "pop: " + tastyStack.pop() );
 	  System.out.println( tastyStack.pop() );
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }//end main()
 
 }//end class ALStack
