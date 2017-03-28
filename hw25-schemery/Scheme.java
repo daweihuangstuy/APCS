@@ -15,8 +15,8 @@
 	the parameters of the unload method.
 	3) Use the Unload method to solve the expression and return a term
 	4) Subsitute the term in the place of the original nested list
-	5) Is there a single term left (Base Case)? If so return that term. If not repeat 
-	steps 1 - 4. (Recursive Step)
+	5) Is there a single term left in the expression (Base Case)? If so return that term.
+	If not repeat steps 1 - 4. (Recursive Step)
  * 
  * STACK OF CHOICE: ___LLStack__ by __library___
  * b/c ...
