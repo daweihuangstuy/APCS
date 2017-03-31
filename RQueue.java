@@ -1,3 +1,8 @@
+// Dawei Huang
+// APCS2 pd5
+// HW28 -- Now Let’s Consider You Lot at Fake Terry’s
+// 2017-03-31
+
 /*****************************************************
  * class RQueue
  * A linked-list-based, randomized queue
@@ -16,6 +21,7 @@
  * _front always points to next item to be removed
  ******************************************************/
 
+import java.util.ArrayList;
 
 public class RQueue<T> implements Queue<T> 
 {
@@ -36,14 +42,16 @@ public class RQueue<T> implements Queue<T>
     public void enqueue( T enQVal ) 
     {
 	/* YIH */
-	if (size == 0){
+	if (_front == null){
 	    _front = new LLNode(enQVal, null);
 	    _end = _front;
 	}
 	else{
-	    _end.setNext(new LLNode(enQvAL, NULL));
+	    _end.setNext(new LLNode(enQVal, null));
+		_end = _end.getNext();
+		_end.setNext(_front);
 	}
-	size += 1;
+	_size += 1;
     }
 
 
@@ -52,9 +60,15 @@ public class RQueue<T> implements Queue<T>
     public T dequeue() 
     { 
 	/* YIH */
+	if(_front == null){
+		return null;
+	}
+	T frontStor = _front.getValue();
 	_front = _front.getNext();
-    }
-
+	sample();
+	_size -= 1;
+	return frontStor;
+	}
 
     //return next item to be dequeued
     public T peekFront() 
@@ -72,12 +86,30 @@ public class RQueue<T> implements Queue<T>
     public void sample () 
     {
 	/* YIH */
+	ArrayList<LLNode> queueStor = new ArrayList<LLNode>();
+	LLNode pointer = _front;
+	while(pointer != _end){
+		queueStor.add(((int)(Math.random() * (queueStor.size() + 1))), pointer);
+		pointer = pointer.getNext();
+    }
+	queueStor.add(((int)(Math.random() * (queueStor.size() + 1))), pointer);
+	_end = pointer;
+	_front = queueStor.get(0);
+	queueStor.remove(0);
+	pointer = _front;
+	while(queueStor.size() > 0){
+		pointer.setNext(queueStor.get(0));
+		queueStor.remove(0);
+		pointer = pointer.getNext();
+	}
+	_end = pointer;
     }
 
 
     public boolean isEmpty() 
     { 
 	/* YIH */
+	return _front == null;
     }//O(1)
 
 
@@ -85,6 +117,14 @@ public class RQueue<T> implements Queue<T>
     public String toString() 
     { 
 	/* YIH */
+	String retStr = "[";
+	LLNode pointer = _front;
+	while(pointer != _end){
+		retStr += pointer.getValue() + ", ";
+		pointer = pointer.getNext();
+	}
+	retStr += pointer.getValue() + "]";
+	return retStr;
     }//O(n)
 
 
@@ -92,7 +132,7 @@ public class RQueue<T> implements Queue<T>
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  Queue<String> PirateQueue = new RQueue<String>();
 
 	  System.out.println("\nnow enqueuing..."); 
@@ -113,10 +153,11 @@ public class RQueue<T> implements Queue<T>
 	  System.out.println( PirateQueue.dequeue() );
 	  System.out.println( PirateQueue.dequeue() );
 	  System.out.println( PirateQueue.dequeue() );
+	  // System.out.println( PirateQueue);
 
 	  System.out.println("\nnow dequeuing fr empty queue..."); 
-	  System.out.println( PirateQueue.dequeue() );
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	  System.out.println( "" );
+	  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }//end main
 
 }//end class RQueue

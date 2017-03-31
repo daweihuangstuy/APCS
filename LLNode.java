@@ -1,82 +1,71 @@
-//Dawei Huang
-//APCS2 pd5
-//HW100002a -- We Got a Little Ol Convoy...
-//2017-03-13
+// Dawei Huang
+// APCS2 pd5
+// HW26 -- The English Do Not Wait In Line for Soup or Anything Else; They "Queue Up"
+// 2017-03-29
 
 /*****************************************************
  * class LLNode
  * Implements a node, for use in lists and other container classes.
  *****************************************************/
 
-public class LLNode 
-{
+public class LLNode<T> {
 
-    private String _cargo;    //cargo may only be of type String
-    private LLNode _nextNode; //pointer to next LLNode
+    private T _cargo;    //cargo may only be of type T
+    private LLNode<T> _nextNode; //pointer to next LLNode
 
     // constructor -- initializes instance vars
-    public LLNode( String value, LLNode next ) 
-    {
-		_cargo = value;
-		_nextNode = next;
+    public LLNode( T value, LLNode<T> next ) {
+	_cargo = value;
+	_nextNode = next;
     }
 
 
     //--------------v  ACCESSORS  v--------------
-    public String getCargo() { return _cargo; }
+    public T getValue() { return _cargo; }
 
-    public LLNode getNext() { return _nextNode; }
+    public LLNode<T> getNext() { return _nextNode; }
     //--------------^  ACCESSORS  ^--------------
 
 
     //--------------v  MUTATORS  v--------------
-    public String setCargo( String newCargo ) 
-{	
+    public T setValue( T newCargo ) {
+	T foo = getValue();
 	_cargo = newCargo;
-	return newCargo;
+	return foo;
     }
 
-    public LLNode setNext( LLNode newNext ) 
-{
+    public LLNode<T> setNext( LLNode<T> newNext ) {
+	LLNode<T> foo = getNext();
 	_nextNode = newNext;
-	return newNext;
+	return foo;
     }
     //--------------^  MUTATORS  ^--------------
 
 
     // override inherited toString
     public String toString() { return _cargo.toString(); }
-	
+
 
     //main method for testing
-    public static void main( String[] args ) 
-{
+    public static void main( String[] args ) {
 
-	//~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
 	//Below is an exercise in creating a linked list...
 
 	//Create a node
-	LLNode first = new LLNode( "cat", null );
+	LLNode<String> first = new LLNode<String>( "cat", null );
 
 	//Create a new node after the first
-	first.setNext( new LLNode( "dog", null ) );
+	first.setNext( new LLNode<String>( "dog", null ) );
 
 	//Create a third node after the second
-	first.getNext().setNext( new LLNode( "cow", null ) );
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	first.getNext().setNext( new LLNode<String>( "cow", null ) );
 
-	// A naive list traversal:
-	while( first != null ) {
-	    System.out.println( first );
-	    first = first.getNext();
+	LLNode temp = first; 
+	while( temp != null ) {
+	    System.out.println( temp );
+	    temp = temp.getNext();
 	}
-	
 
-	//Q: When head ptr moves to next node in list,
-	//   what happens to the node it just left?
-	
-	//A: The node that it left got overwritten because you set first to the next node.
-	
     }//end main
 
 }//end class LLNode
