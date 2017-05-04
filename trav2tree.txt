@@ -1,0 +1,28 @@
+// Dawei Huang
+// APCS2 pd5
+// HW32 -- Getting Past the Velvet Rope
+// 2017-04-2
+
+1) Algorithm (given preorder and inorder)
+	1) The first preorder node must be the root of the tree
+	2) The second preorder node must be the left child of the root node
+	3) Follow the preorder node order and create consecutive left children until after
+	you have placed the first node of the inorder sequence.
+	4) Go up the node you have just formed and place nodes according to its leftmost place
+	consistent with its inorder sequence.
+
+2) Algorithm (given inorder and postorder)
+	1) Designate the last postorder node as the root of your tree
+	2) The left children of the root are all the nodes to the left of the root in the inorder
+	sequence and every right children of the root are all to nodes to the right of the inorder
+	sequence.
+	3) Create the subtree of everything to the right of the root and everything
+	to the left of the root. The root of either subtree is the left or right child of the main tree.
+	4) Repeat step three until no more subtrees can be created.
+	
+3) Algorithm (given preorder and postorder)
+	- Since preorder and postorder are very similar, they probably would only work if the tree is full.
+	1) Designate the first preorder/last post node as the root of the tree.
+	2) From the postorder sequence, if the next node matches with the penultimate node of the preorder sequence
+	than that is the left child of the root node. ????????????????????????
+	3) Repeat step 2 until the tree is comleted. ????????????????????????

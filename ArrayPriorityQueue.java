@@ -32,6 +32,10 @@ public class ArrayPriorityQueue implements PriorityQueue {
 		}
 		return minVal;
     }
+	public int size(){
+		return _data.size();
+	}
+	
 	public String toString(){
 		return _data.toString();
 	}
