@@ -1,7 +1,7 @@
 // Dawei Huang
 // APCS2 pd5
-// HW34 -- Algorithm as Data Structure
-// 2017-05-04
+// HW35 -- BSTs is the Perfect Place for Shade that’s just how I feel:: May the Fourth Be With You
+// 2017-05-05
 
 /*****************************************************
  * class BST
@@ -37,32 +37,33 @@ public class BST
     public void insert( int newVal ) 
     {
      	/*** YOUR IMPLEMENTATION HERE ***/
-		if (root == null){
+		if(root == null){
 			root = new TreeNode(newVal);
+		}
+		insert(root, newVal);
+    }
+	
+	public void insert( TreeNode root, int newVal){
+		if(root == null){
 			return;
 		}
-		TreeNode currNode = root;
-		while(currNode.getLeft() != null || currNode.getRight() != null){
-			if (newVal > currNode.getValue()){
-				if(currNode.getRight() == null){
-					break;
-				}
-				currNode = currNode.getRight();
+		if(newVal < root.getValue()){
+			if(root.getLeft() == null){
+				root.setLeft(new TreeNode(newVal));
 			}
-			else if (newVal < currNode.getValue()){
-				if(currNode.getLeft() == null){
-					break;
-				}
-				currNode = currNode.getLeft();
+			else{
+				insert(root.getLeft(), newVal);
 			}
 		}
-		if (newVal > currNode.getValue()){
-			currNode.setRight(new TreeNode(newVal));
+		if(newVal > root.getValue()){
+			if(root.getRight() == null){
+				root.setRight(new TreeNode(newVal));
+			}
+			else{
+				insert(root.getRight(), newVal);
+			}
 		}
-		else if (newVal < currNode.getValue()){
-			currNode.setLeft(new TreeNode(newVal));
-		}
-    }
+	}
 
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,7 +122,73 @@ public class BST
     //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+	 /*****************************************************
+     * TreeNode search(int)
+     * returns pointer to node containing target,
+     * or null if target not found
+     *****************************************************/
+    TreeNode search( int target )
+    {
+    	/*** YOUR IMPLEMENTATION HERE ***/
+		return searchRec(root, target);
+    }
+	
+	TreeNode searchRec(TreeNode root, int target){
+		if(root == null){
+			return null;
+		}
+		else if(target < root.getValue()){
+			searchRec(root.getLeft(), target);
+			System.out.println(1);
+		}
+		else if(target > root.getValue()){
+			searchRec(root.getRight(), target);
+		}
+		else if(target == root.getValue()){
+			return root;
+		}
+		return null;
+	}
 
+    /*****************************************************
+     * int height()
+     * returns height of this tree (length of longest leaf-to-root path)
+     * eg: a 1-node tree has height 1
+     *****************************************************/
+    public int height()
+    {
+    	/*** YOUR IMPLEMENTATION HERE ***/
+		ArrayList<TreeNode> level = new ArrayList<TreeNode>();
+		ArrayList.add(root);
+    }
+
+
+    /*****************************************************
+     * int numLeaves()
+     * returns number of leaves in tree
+     *****************************************************/
+    public int numLeaves()
+    {
+    	/*** YOUR IMPLEMENTATION HERE ***/
+		if(root == null){
+			return 1;
+		}
+		return numLeavesRec(root) + 1;
+    }
+	
+	public int numLeavesRec(TreeNode root){
+		if(root.getRight() == null && root.getLeft() == null){
+			return 0;
+		}
+		if(root.getRight() != null){
+			return 1 + numLeavesRec(root.getRight());
+		}
+		if(root.getLeft() != null){
+			return 1 + numLeavesRec(root.getLeft());
+		}
+		return 0;		
+	}
+	
     //main method for testing
     public static void main( String[] args ) 
     {
@@ -143,6 +210,15 @@ public class BST
 	
 	  System.out.println( "\npost-order traversal:" );
 	  arbol.postOrderTrav(); // 2 1 3 5 6 4
+	  
+	  System.out.println( "\nsearch algorithm traversal:" );
+	  System.out.println(arbol.search(2)); // 2 1 3 5 6 4
+	  
+	  System.out.println( "\nleaf num algorithm traversal:" );
+	  System.out.println(arbol.numLeaves()); // 3
+	  
+	  System.out.println( "\nheight algorithm traversal:" );
+	  System.out.println("tbd"); // 3
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
 
