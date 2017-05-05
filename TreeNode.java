@@ -1,7 +1,7 @@
-// Dawei Huang
-// APCS2 pd5
-// HW35 -- BSTs is the Perfect Place for Shade that’s just how I feel:: May the Fourth Be With You
-// 2017-05-05
+// Clyde "Thluffy" Sinclair
+// APCS2 pd0
+// HW34 -- Algo as Data Structure
+// 2017-05-04
 
 /*****************************************************
  * class TreeNode
@@ -12,21 +12,18 @@
 public class TreeNode 
 {
     //instance variables / attributes of a TreeNode:
-    private int treeVal;
-    private TreeNode leftChild;
-    private TreeNode rightChild;
-	
-	/*****************************************************
+    int _cargo;     //this node's data
+    TreeNode _lt, _rt; //pointers to left, right subtrees
+
+
+    /*****************************************************
      * default constructor
      * Construct a tree node with specified value, 
      * with null left and right subtrees.
      *****************************************************/
     TreeNode( int initValue )
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	treeVal = initValue;
-	leftChild = null;
-	rightChild = null;
+	_cargo = initValue;
     }
           
 
@@ -37,10 +34,9 @@ public class TreeNode
      *****************************************************/
     TreeNode( int initValue, TreeNode initLeft, TreeNode initRight ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	treeVal = initValue;
-	leftChild = initLeft;
-	rightChild = initRight;
+	this(initValue);
+	_lt = initLeft;
+	_rt = initRight;
     }
  
 
@@ -49,8 +45,7 @@ public class TreeNode
      *****************************************************/
     TreeNode getLeft() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
- 	return leftChild;
+	return _lt;
     }
 
 
@@ -59,8 +54,7 @@ public class TreeNode
      *****************************************************/
     TreeNode getRight() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	return rightChild;
+	return _rt;
     }
 
 
@@ -69,8 +63,7 @@ public class TreeNode
      *****************************************************/
     int getValue() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	return treeVal;
+	return _cargo;
     }
 
 
@@ -79,8 +72,7 @@ public class TreeNode
      *****************************************************/
     void setLeft( TreeNode theNewLeft ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	leftChild = theNewLeft;
+	_lt = theNewLeft;
     }
 
 
@@ -89,8 +81,7 @@ public class TreeNode
      *****************************************************/
     void setRight( TreeNode theNewRight ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	rightChild = theNewRight;
+	_rt = theNewRight;
     }
 
 
@@ -99,8 +90,7 @@ public class TreeNode
      *****************************************************/
     void setValue( int theNewValue ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
-	treeVal = theNewValue;
+	_cargo = theNewValue;
     }
  
 }//end class
