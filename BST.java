@@ -1,3 +1,8 @@
+// Dawei Huang
+// APCS2 pd5
+// HW36 -- Prune Your Tree
+// 2017-05-08
+
 /*****************************************************
  * class BST
  * Implementation of the BINARY SEARCH TREE abstract data type (ADT) 
@@ -135,44 +140,80 @@ public class BST
 	TreeNode follower = null; //piggybacker
 
 	//first, walk leader down to target node w/ follower trailing...
-	while (true){
-	    if (remVal < _root.getRight()){
-		follower = leader;
-		leader = leader.getRight()     
-	    }
+	while(leader != null){
+		if(remVal < leader.getValue()){
+			if(leader.getLeft() == null){
+				break;
+			}
+			else{
+				follower = leader;
+				leader = leader.getLeft();
+			}
+		}
+		if(remVal > leader.getValue()){
+			if(leader.getRight() == null){
+				break;
+			}
+			else{
+				follower = leader;
+				leader = leader.getRight();
+			}
+		}
+		if(remVal == leader.getValue()){
+			break;
+		}
 	}
 	
 	//CASE 1: removal node is a leaf
 	//action: snip it
 	if ( isLeaf(leader) ) {
 	    //subcase: 1-node tree
-
+		if (height() == 1) {
+		leader = null;
+	    }
 	    //subcase: removal node is a left child
-
+		else if (follower.getLeft().getValue() == remVal) {
+		follower.setLeft(null);
+	    }
 	    //subcase: removal node is a right child
-
+		else if (follower.getRight().getValue() == remVal){
+		follower.setRight(null);
+	    }
 	}
 
 	//CASE 2: removal node has 1 subtree
 	//action: replace node with only child
 	else if ( leader.getRight()==null ) { //rem node's child is on left
-
+	    
 	    //subcase: removal node is root
-
+	    if (leader == _root) {
+		_root = leader.getLeft();
+	    }
 	    //subcase: removal node is a left child
-
+	    else if (follower.getLeft() == leader) {
+		follower.setLeft(leader.getLeft());
+	    }
 	    //subcase: removal node is a right child
-
+	    else if (follower.getRight() == leader){
+		follower.setRight(leader.getLeft());
+	    }
 	}
 	else if ( leader.getLeft()==null ) { //rem node's child is on right
 
 	    //subcase: removal node is root
-
+	    if (leader == _root) {
+		_root = leader.getRight();
+	    }
 	    //subcase: removal node is a left child
-
+	    else if (follower.getLeft() == leader) {
+		follower.setLeft(leader.getRight());
+	    }
 	    //subcase: removal node is a right child
-
+	    else if (follower.getRight() == leader){
+		follower.setRight(leader.getRight());
+	    }
 	}
+
 
 	//CASE 3: removal node has 2 subtrees
 	//action: overwrite removal node value with max value in left subtree
@@ -185,17 +226,24 @@ public class BST
             }
 
 	    //create replacement node for removal node
-            TreeNode tmp = new TreeNode( maxLST.getValue() );
-            tmp.setLeft( leader.getLeft() );
-            tmp.setRight( leader.getRight() );
+            TreeNode tmp = new TreeNode(maxLST.getValue());
+            tmp.setLeft(leader.getLeft());
+            tmp.setRight(leader.getRight());
 
-            remove( maxLST.getValue() );
+            remove(maxLST.getValue());
 
 	    //subcase: removal node is root
-
+	    if (leader == _root) {
+		_root = tmp;
+	    }
 	    //subcase: removal node is a left child
-
+	    else if (follower.getRight() == leader) {
+		follower.setLeft(tmp);
+	    }
 	    //subcase: removal node is a right child
+	    else if (follower.getLeft() == leader){
+		follower.setRight(tmp);
+	    }
 
 	}
 	return leader;
@@ -338,7 +386,7 @@ public class BST
 	System.out.println();
 	System.out.println( arbol );
 
-	/*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
+	//*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
 	arbol.remove(6);
 	System.out.println();
 	System.out.println( arbol );
@@ -366,7 +414,7 @@ public class BST
 	arbol.remove(0);
 	System.out.println();
 	System.out.println( arbol );
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }//end main
  
 }//end class
